@@ -45,5 +45,19 @@ Install a specific version:
 
 Install the latest published version:
  * `Install-Module BouncyPowerShellPGP` 
+## Generating the Module
+The easiest way is to run `GeneratePGPModuleDefinition.ps1`, it populates the metadata etc.
+### Publishing to PowerShellGallery, Common Issues
+The one-liner to publish is as follows, it will likely only work if you're me (Unless you're forking to a new module name)
+Navigate to the root of the repository, then run the following:
+```pwsh
+ Publish-Module -Name ..\BouncyPowershellPGP -NuGetApiKey "APIKey Goes here"
+```
+
+If you get an obscure nuget error talking about **"The target framework 'netcoreapp2.0' is out of support and will not receive security updatesin the future. (etc)"**, the following snippet will download a workable version of `nuget` and once you start a new PowerShell session, you should be able to publish.
+
+```pwsh
+Invoke-WebRequest -Uri https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile "$env:LOCALAPPDATA\Microsoft\Windows\PowerShell\PowerShellGet\NuGet.exe"
+```
 ## References
 https://www.bouncycastle.org/csharp/
