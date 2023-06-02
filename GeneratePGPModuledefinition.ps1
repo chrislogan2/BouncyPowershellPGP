@@ -10,7 +10,7 @@ $Params = @{
     "VariablesToExport" 		= '' 
     "AliasesToExport" 		= @() 
     "RequiredAssemblies" = @(".\lib\net6.0\BouncyCastle.Cryptography.dll")
-    "ModuleVersion" = "0.0.3"
+    "ModuleVersion" = "0.0.4"
     "PowerShellVersion" = 5.1
     "Description" = 'A Basic Wrapper to Decrypt PGP Files / Folders with BouncyCastle' 
 } 
