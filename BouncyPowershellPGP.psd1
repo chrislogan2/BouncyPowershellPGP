@@ -18,7 +18,7 @@ ModuleVersion = '0.0.4'
 CompatiblePSEditions = 'Desktop', 'Core'
 
 # ID used to uniquely identify this module
-GUID = '32441245-5f8e-403c-b20d-eb30441ed068'
+GUID = 'ea32d010-9133-412a-a30a-6fb9e6963457'
 
 # Author of this module
 Author = 'Christopher Logan'
@@ -119,6 +119,19 @@ PrivateData = @{
         # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
+
+
+    # ReleaseNotes
+    ReleaseNotes = 'Add output filename to decryption cmdlet. Make metadata better. '
+
+    # RequireLicenseAcceptance
+    RequireLicenseAcceptance = 'False'
+
+    # ProjectUri
+    ProjectUri = 'https://github.com/chrislogan2/BouncyPowershellPGP'
+
+    # Tags
+    Tags = 'gpg pgp encrypt encryption decryption decrypt windows'
 
 } # End of PrivateData hashtable
 
