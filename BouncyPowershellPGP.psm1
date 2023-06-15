@@ -121,9 +121,9 @@ function ConvertFrom-EncryptedPGPFile {
         }
         [system.io.stream]$fout = [system.io.file]::create("$OutputFolderPath\$outfilename$(if($AppendDate){get-date -format FileDateUniversal})$(if($AppendDefaultSuffix){$DefaultSuffix})")
         [system.io.stream]$unc = $ld.getinputstream();
-        [Org.BouncyCastle.Utilities.io.Streams]::pipeall($unc, $fout)
+        [Org.BouncyCastle.Utilities.io.Streams]::pipeall($unc, $fout);
         $OutputFileData = $fout.Name
-        $fout.close()
+        $fout.close();
     }elseif($message -is [Org.BouncyCastle.Bcpg.OpenPgp.PgpOnePassSignatureList]) {
         throw  [Org.BouncyCastle.Bcpg.OpenPgp.PgpException]::new("encrypted message contains a signed message - not literal data.");
     }else {
