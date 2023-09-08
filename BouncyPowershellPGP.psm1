@@ -163,16 +163,24 @@ function Decrypt-EncryptedPGPFolder {
     write-debug "$($Childitems.count) files to decrypt in $ENcryptedFolderName"
     $CHILDITEMS | ForEach-Object {
         if($PSCmdlet.ParameterSetName -eq "SecureParamSet"){
+            try {
             ConvertFrom-EncryptedPGPFile -SecretKeyFilePath $SecretKeyFilePath -EncryptedFileName $_.Fullname `
             -SecurePassphrase $SecurePassphrase -OutputFolderPath $outputfolderpath `
             -AppendDate:$AppendDate -DefaultFilePrefix $DefaultFilePrefix `
             -AppendDefaultSuffix:$AppendDefaultSuffix -DefaultSuffix $DefaultSuffix
+            } catch {
+                write-error "Failed to securely decrypt $($_.FullName)"
+            }
 
         }else{
+            try {
             ConvertFrom-EncryptedPGPFile -SecretKeyFilePath $SecretKeyFilePath -EncryptedFileName $_.Fullname `
             -PlainTextPassphrase $PlainTextPassphrase -OutputFolderPath $outputfolderpath `
             -AppendDate:$AppendDate -DefaultFilePrefix $DefaultFilePrefix `
             -AppendDefaultSuffix:$AppendDefaultSuffix -DefaultSuffix $DefaultSuffix
+            }catch {
+                write-error "Failed to securely decrypt $($_.FullName)"
+            }
         }
     }
 }
