@@ -105,7 +105,11 @@ function ConvertFrom-EncryptedPGPFile {
         [Org.BouncyCastle.Bcpg.OpenPgp.PgpObjectFactory]$pgpfact = [Org.BouncyCastle.Bcpg.OpenPgp.PgpObjectFactory]::new($cdata.GetDataStream())
         $message  = $pgpFact.NextPgpObject();
     }
-    
+    if($message -is [Org.BouncyCastle.Bcpg.OpenPgp.PgpOnePassSignatureList]){
+        $message  = $pgpFact.NextPgpObject();
+        write-debug "Object was a signature list, searching for encrypted data";
+    }
+
 
     if($message -is [Org.BouncyCastle.Bcpg.OpenPgp.PgpLiteralData]) {
         [Org.BouncyCastle.Bcpg.OpenPgp.PgpLiteralData]$ld = [Org.BouncyCastle.Bcpg.OpenPgp.PgpLiteralData]$message
