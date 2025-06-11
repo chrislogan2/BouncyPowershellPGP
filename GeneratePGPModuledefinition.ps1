@@ -10,7 +10,7 @@ $Params = @{
     "VariablesToExport" 		= '' 
     "AliasesToExport" 		= @() 
     "RequiredAssemblies" = @(".\lib\net6.0\BouncyCastle.Cryptography.dll")
-    "ModuleVersion" = "0.0.4"
+    "ModuleVersion" = "0.0.5"
     "PowerShellVersion" = 5.1
     "Description" = 'A Basic Wrapper to Decrypt PGP Files / Folders with BouncyCastle' 
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
